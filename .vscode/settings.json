@@ -1,0 +1,91 @@
+{
+    "workbench.colorTheme": "Material Theme Ocean",
+    "workbench.productIconTheme": "fluent-icons",
+    "workbench.iconTheme": "material-icon-theme",
+    "code-runner.executorMap": {
+        "dart": "flutter run ",
+    },
+    "code-runner.customCommand": "dart $fullFileName",
+    "dart.documentation": "full",
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+    "cmake.options.statusBarVisibility": "visible",
+    "cmake.sourceDirectory": "H:/flutter-project/flutterstart/windows",
+    "workbench.colorCustomizations": {
+        "terminal.foreground": "#d41f7a",
+        "terminal.background": "#002B36",
+        "terminalCursor.foreground": "#ebe5e5",
+        "terminal.ansiBlack": "#000000",
+        "terminal.ansiBlue": "#0000FF",
+        "terminal.ansiCyan": "#00FFFF",
+        "terminal.ansiGreen": "#00FF00",
+        "terminal.ansiMagenta": "#FF00FF",
+        "terminal.ansiRed": "#FF0000",
+        "terminal.ansiWhite": "#FFFFFF",
+        "terminal.ansiYellow": "#FFFF00",
+        // 其他颜色设置...
+    },
+    "todo-tree.tree.disableCompactFolders": false,
+    "explorer.compactFolders": false,
+    "cSpell.words": [
+        "cupertino",
+        "Lato",
+        "Lugrasimo"
+    ]
+    // "RainbowBrackets.consecutivePairColors": [
+    //     "()",
+    //     "[]",
+    //     "{}",
+    //     [
+    //         "teal",
+    //         "black",
+    //         "tomato"
+    //     ],
+    //     "Revioletd"
+    // ]
+}

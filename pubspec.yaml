@@ -1,0 +1,90 @@
+name: flutterstart
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+# 以下定义了应用程序的版本和构建号。
+# 版本号是由三个数字组成，由点分隔，例如 1.2.43
+# 它可以被 flutter build 命令的 --build-name 选项覆盖。
+# 构建号可以被 flutter build 命令的 --build-number 选项覆盖。
+# 在 Android 中，build-name 用作 versionName，build-number 用作 versionCode。
+# 更多信息请参考 https://developer.android.com/studio/publish/versioning
+# 在 iOS 中，build-name 用作 CFBundleShortVersionString，build-number 用作 CFBundleVersion。
+# 更多信息请参考
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# 在 Windows 中，build-name 用作产品和文件版本的主要、次要和修订部分，
+# build-number 用作构建后缀。
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+# 依赖项指定了您的软件包在运行时需要的其他包。
+# 若要自动升级您的包依赖项到最新版本，
+# 可以运行 `flutter pub upgrade --major-versions`。
+# 或者，依赖项可以手动更新为最新版本，
+# 只需将下面的版本号更改为 pub.dev 上可用的最新版本即可。
+# 若要查看哪些依赖项有更新的版本，
+# 可以运行 `flutter pub outdated`。
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.6
+  url_launcher: ^6.2.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^3.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+  fonts:
+    - family: Lugrasimo
+      fonts:
+        - asset: assets/fonts/Lugrasimo-Regular.ttf
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # 关于从包依赖项添加资源的详细信息，请参阅
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # 要将自定义字体添加到您的应用程序中，请在此“flutter”部分中添加一个“fonts”部分。
+  # 该列表中的每一项都应该有一个“family”键，其中包含字体家族名称，并有一个“fonts”键，
+  # 其中包含用于字体的资源和其他描述符。例如：
+  # fonts:
+  #   - family: 楷体
+  #     fonts:
+  #       - asset: fonts/Kaiti-Regular.ttf
+  #       - asset: fonts/Kaiti-Bold.ttf
+  #         weight: 700
+  #   - family: 宋体
+  #     fonts:
+  #       - asset: fonts/SimSun-Regular.ttf
+  #       - asset: fonts/SimSun-Bold.ttf
+  #         weight: 700
+  #
+  # 有关从包依赖项添加字体的更多信息，请参阅
+  # https://flutter.dev/custom-fonts/#from-packages

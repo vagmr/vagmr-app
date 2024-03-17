@@ -73,10 +73,12 @@
     "todo-tree.tree.disableCompactFolders": false,
     "explorer.compactFolders": false,
     "cSpell.words": [
+        "audioplayers",
         "cupertino",
         "Lato",
         "Lugrasimo"
-    ]
+    ],
+    "accessibility.voice.speechLanguage": "zh-CN"
     // "RainbowBrackets.consecutivePairColors": [
     //     "()",
     //     "[]",

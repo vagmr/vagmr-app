@@ -76,7 +76,8 @@
         "audioplayers",
         "cupertino",
         "Lato",
-        "Lugrasimo"
+        "Lugrasimo",
+        "srcnum"
     ],
     "accessibility.voice.speechLanguage": "zh-CN"
     // "RainbowBrackets.consecutivePairColors": [

@@ -40,14 +40,30 @@ class PlayerMain extends StatefulWidget {
 class _PlayerMain extends State<PlayerMain> {
   final audiosList = <Map<String, dynamic>>[
     // 音频列表
-    {"src": "audios/note1.wav", "color": Colors.blue},
-    {"src": "audios/note2.wav", "color": Colors.white},
-    {"src": "audios/note3.wav", "color": Colors.red},
-    {"src": "audios/note4.wav", "color": Colors.green},
-    {"src": "audios/note5.wav", "color": Colors.purple},
-    {"src": "audios/note6.wav", "color": Colors.amber},
-    {"src": "audios/note7.wav", "color": Colors.indigo},
+    {"srcnum": 1, "color": Colors.blue},
+    {"srcnum": 2, "color": Colors.white},
+    {"srcnum": 3, "color": Colors.red},
+    {"srcnum": 4, "color": Colors.green},
+    {"srcnum": 5, "color": Colors.purple},
+    {"srcnum": 6, "color": Colors.amber},
+    {"srcnum": 7, "color": Colors.indigo},
   ];
+  void playSound(int soundNumber) {
+    final player = AudioPlayer();
+    player.play(AssetSource("audios/note$soundNumber.wav"));
+  }
+
+  //* 播放按钮
+  Expanded playButton(BuildContext context, int sourceNumber, Color color) =>
+      Expanded(
+          child: Container(
+        // 播放按钮背景
+        color: color,
+        child: TextButton(
+          onPressed: () => playSound(sourceNumber),
+          child: const Icon(Icons.play_arrow_rounded), // 播放按钮图标
+        ),
+      ));
 
   @override
   Widget build(BuildContext context) {
@@ -57,22 +73,8 @@ class _PlayerMain extends State<PlayerMain> {
       mainAxisAlignment: MainAxisAlignment.start, // 顶部对齐
       crossAxisAlignment: CrossAxisAlignment.stretch, // 宽度占满
       children: audiosList // 遍历音频列表
-          .map((el) => playButton(context, el["src"], el["color"])) // 生成播放按钮
+          .map((el) => playButton(context, el["srcnum"], el["color"])) // 生成播放按钮
           .toList(),
     );
   }
 }
-
-/// 播放按钮
-Widget playButton(BuildContext context, String source, Color color) => Expanded(
-        child: Container(
-      // 播放按钮背景
-      color: color,
-      child: TextButton(
-        onPressed: () {
-          final player = AudioPlayer(); // 创建播放器
-          player.play(AssetSource(source)); // 播放音频
-        },
-        child: const Icon(Icons.play_arrow_rounded), // 播放按钮图标
-      ),
-    ));

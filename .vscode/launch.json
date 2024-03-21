@@ -29,6 +29,15 @@
             "flutterMode": "debug",
             "program": "${file}",
             "cwd": "${workspaceFolder}"
+        },
+        // release当前文件
+        {
+            "name": "flutterstart (release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

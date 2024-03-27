@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'weather.dart';
+import 'show_alert.dart';
+import 'loading.dart';
+import 'location_screen.dart';
+import 'weather_map.dart';
 
 class WeatherHomePage extends StatefulWidget {
   const WeatherHomePage({super.key});
@@ -12,39 +15,7 @@ class WeatherHomePage extends StatefulWidget {
 class WeatherHomePageState extends State<WeatherHomePage> {
   Position? _position;
   LocationPermission? _permission;
-
-  Alert showAlert({
-    required BuildContext context,
-    required AlertType type,
-    String? title,
-    String? desc,
-    String confirmText = '确定',
-    String cancelText = '取消',
-  }) {
-    return Alert(
-        context: context,
-        type: type,
-        title: title ?? '提示',
-        desc: desc,
-        buttons: [
-          DialogButton(
-            onPressed: () => Navigator.pop(context),
-            color: const Color.fromRGBO(0, 179, 134, 1.0),
-            child: Text(confirmText,
-                style: const TextStyle(color: Colors.white, fontSize: 20)),
-          ),
-          DialogButton(
-              onPressed: () => Navigator.pop(context),
-              gradient: const LinearGradient(colors: [
-                Color.fromRGBO(116, 116, 191, 1.0),
-                Color.fromRGBO(52, 138, 199, 1.0)
-              ]),
-              child: Text(
-                cancelText,
-                style: const TextStyle(color: Colors.white, fontSize: 20),
-              ))
-        ]);
-  }
+  Map<String, dynamic>? _pushData;
 
   Future<void> checkPermission() async {
     bool serviceEnabled;
@@ -102,27 +73,27 @@ class WeatherHomePageState extends State<WeatherHomePage> {
     print(_permission); // 输出当前的权限状态
 
     try {
-      if (_permission == LocationPermission.whileInUse ||
-          _permission == LocationPermission.always) {
-        // 获取当前位置
-        _position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.lowest,
-          timeLimit: const Duration(seconds: 5),
-        );
-        WeatherData weatherData =
-            WeatherData(lat: _position!.latitude, lon: _position!.longitude);
-        await weatherData.setWeather();
-        print(weatherData.weatherDict);
-        setState(() {}); // 更新UI
-      }
+      final weatherModel = WeatherModel();
+      var value =
+          await weatherModel.getPositionAndData(permission: _permission);
+      _position = value[0];
+      _pushData = value[1];
+      print(_pushData);
+      setState(() {});
     } catch (e) {
       if (mounted) {
-        showAlert(
-          context: context,
-          title: "错误",
-          desc: e.toString(),
-          type: AlertType.error,
-        ).show();
+        Alert(
+            context: context,
+            title: "错误",
+            desc: "${e.toString()},请尝试手动点击按钮获取",
+            type: AlertType.error,
+            buttons: [
+              DialogButton(
+                  child: const Text("取消"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  })
+            ]).show();
       }
     }
   }
@@ -155,7 +126,27 @@ class WeatherHomePageState extends State<WeatherHomePage> {
             ),
             child: const Text('获取定位信息'),
           ),
-          Text(_position == null ? '未获取到定位信息' : _position.toString())
+          _position == null
+              ? const Loading()
+              : TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LocationScreen(
+                            pushData: _pushData!,
+                          ),
+                        ));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.only(top: 15.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.0),
+                      color: const Color(0xFFf1356d),
+                    ),
+                    child: const Text('查看天气信息'),
+                  )),
         ],
       ),
     );

@@ -70,7 +70,6 @@ class WeatherHomePageState extends State<WeatherHomePage> {
     }
 
     // 当我们到达这里时,已经获得了权限,可以继续访问设备位置
-    print(_permission); // 输出当前的权限状态
 
     try {
       final weatherModel = WeatherModel();
@@ -78,7 +77,6 @@ class WeatherHomePageState extends State<WeatherHomePage> {
           await weatherModel.getPositionAndData(permission: _permission);
       _position = value[0];
       _pushData = value[1];
-      print(_pushData);
       setState(() {});
     } catch (e) {
       if (mounted) {

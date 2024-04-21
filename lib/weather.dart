@@ -29,7 +29,7 @@ class WeatherData {
     await dotenv.load(fileName: '.env');
     final apiKey = dotenv.get('apikey');
     var url =
-        "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric&lang=zh_cn";
+        "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric";
     NetHelper netHelper = NetHelper(url: url);
     var res = await netHelper.getData();
     weatherDict = jsonDecode(res.body);
